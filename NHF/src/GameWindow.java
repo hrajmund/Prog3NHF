@@ -5,47 +5,46 @@ import java.awt.event.ActionListener;
 import java.util.EventListener;
 
 public class GameWindow extends JFrame {
-    private final JButton Start;
-    private final JButton End;
     private final JPanel upperPanel;
-    private final JPanel lowerPanel;
+    //private final JPanel lowerPanel;
+    private final JFrame frame;
+    private final KeyHandler keyHandler = new KeyHandler();
     GameWindow(){
-        super("Quoridor");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(600,600);
-        this.setLayout(new GridLayout(2,1));
-        this.setResizable(false);
+        frame = new JFrame("Quoridor");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800,800);
+        frame.setLayout(new BorderLayout());
+        frame.setResizable(true);
 
-        upperPanel = new JPanel(new FlowLayout());
-        lowerPanel = new JPanel(new FlowLayout());
+        JPanel northPanel = new JPanel();
+        northPanel.setPreferredSize(new Dimension(100,100));
+        JPanel eastPanel = new JPanel();
+        eastPanel.setPreferredSize(new Dimension(100,100));
+        JPanel westPanel = new JPanel();
+        westPanel.setPreferredSize(new Dimension(150,100));
+        JPanel southPanel = new JPanel();
+        southPanel.setPreferredSize(new Dimension(100,100));
 
+        upperPanel = new JPanel(new GridLayout(9,9,-90,-6));
+        upperPanel.setPreferredSize(new Dimension(100,100));
+        initializeBoardBlocks();
 
-        Start = new JButton("Start");
-        Start.setSize(100,50);
-        End = new JButton("Quit");
-        End.setSize(100,50);
-        Start.addActionListener(new StartEventListener());
-        End.addActionListener(new EndEventListener());
+        frame.add(northPanel, BorderLayout.NORTH);
+        frame.add(eastPanel, BorderLayout.EAST);
+        frame.add(westPanel, BorderLayout.WEST);
+        frame.add(southPanel, BorderLayout.SOUTH);
+        frame.add(upperPanel, BorderLayout.CENTER);
 
-        upperPanel.add(Start);
-        lowerPanel.add(End);
+        frame.addKeyListener(keyHandler);
+        frame.setFocusable(true);
 
-        this.add(upperPanel);
-        this.add(lowerPanel);
+        frame.setVisible(true);
     }
-
-    public class StartEventListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //TODO
-        }
-    }
-
-    public class EndEventListener implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.exit(0);
+    private void initializeBoardBlocks(){
+        for (int i = 0; i < 9; i++){
+            for(int j = 0; j < 9;j++){
+                upperPanel.add(new BoardBlock("E"));
+            }
         }
     }
 }
