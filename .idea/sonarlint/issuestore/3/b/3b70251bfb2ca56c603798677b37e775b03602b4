@@ -1,0 +1,12 @@
+
+E
+java:S1948	"#Make "g" transient or serializable.(åè‹îüÿÿÿÿ8µŞ›Â½1
+>	java:S131""Add a default case to this switch.(ş™ÅŞ8¹Ş›Â½1
+O
+java:S1128"2Remove this unused import 'javax.imageio.ImageIO'.(‘çÔû8¾ºœÂ½1
+[
+java:S1128"9Remove this unused import 'java.awt.image.BufferedImage'.(×íĞ‡şÿÿÿÿ8¿ºœÂ½1
+F
+java:S1128")Remove this unused import 'java.io.File'.(†Ğ¥Å8¿ºœÂ½1
+G
+java:S1068	"%Remove this unused "g" private field.(åè‹îüÿÿÿÿ8ÚŠ°Â½1

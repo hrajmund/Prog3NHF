@@ -2,11 +2,10 @@ public class Player {
     private String name;
     private int numberOfThePlayer;
     private int x, y;
-    Player(String name, int x, int y, int numberOfThePlayer){
+    Player(String name, int numberOfThePlayer){
         this.name = name;
         this.numberOfThePlayer = numberOfThePlayer;
-        this.x = x;
-        this.y = y;
+        x = y = 0;
     }
 
     public String getLocation(){
@@ -20,9 +19,28 @@ public class Player {
         return y;
     }
 
-    /*public void Step(){
-        if(numberOfThePlayer == 1){
-            if()
-        }
-    }*/
+    public void setX(int x){
+        this.x = x;
+    }
+    public void setY(int y){
+        this.y = y;
+    }
+
+    public void setCoordinates(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
+    public void moveLeft(){
+        y -= 1;
+    }
+    public void moveRight(){
+        y += 1;
+    }
+    public void moveUp(){
+        x += 1;
+    }
+    public void moveDown(){
+        x -= 1;
+    }
 }

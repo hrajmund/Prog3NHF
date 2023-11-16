@@ -6,11 +6,14 @@ import java.io.IOException;
 public class GameManager {
     BoardBlock[][] board;
     int[] playerScore;
+    GameManager(BoardBlock[][] board, int[] playerScore){
+       this.board = board;
+       this.playerScore = playerScore;
+    }
 
     GameManager(File gameFile) {
         playerScore = new int[2];
         board = new BoardBlock[9][9];
-        // Specify the file path
         String filePath = "../boards/" + gameFile;
 
         try {
@@ -38,7 +41,12 @@ public class GameManager {
         }
     }
 
-    /*public boolean StepPlayer(Player player){
-
-    }*/
+    public boolean StepPlayer(Player player, int x, int y){
+        if(board[x][y].getState().equals("E")){
+            player.setCoordinates(x,y);
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

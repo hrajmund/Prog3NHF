@@ -39,7 +39,7 @@ public class MenuWindow extends JFrame{
     public class StartEventListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            GameWindow gameWindow = new GameWindow();
+            GameWindow gameWindow = new GameWindow("P1", "P2");
             frame.dispose();
         }
     }
