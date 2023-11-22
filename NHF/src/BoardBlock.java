@@ -7,11 +7,18 @@ import java.io.File;
 public class BoardBlock extends JLabel {
     private String state;
     private Graphics g;
+    private int row;
+    private int column;
 
     BoardBlock(String stat) {
         state = stat;
         setPreferredSize(new Dimension(10, 10)); // Beállítjuk a preferált méretet
     }
+    public void setRow(int row) { this.row = row; }
+    public void setColumn(int column) { this.column = column; }
+
+    public int getRow(){ return row; }
+    public int getColumn() { return column; }
 
     @Override
     protected void paintComponent(Graphics g) {

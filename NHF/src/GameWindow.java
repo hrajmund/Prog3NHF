@@ -46,7 +46,6 @@ public class GameWindow extends JLabel{
 
         P1 = new Player(p1Name, 1);
         P2 = new Player(p2Name, 2);
-        //boardInitialize = true;
 
         if(boardInitialize){
             gameManager = new GameManager(new File(inputBoard + ".txt"));
@@ -55,18 +54,15 @@ public class GameWindow extends JLabel{
         }else{
             board = initializeBoardBlocks(false);
             playerScore = new int[2];
+            playerScore[0] = playerScore[1] = 10;
             gameManager = new GameManager(board, playerScore);
         }
 
-
         KeyHandler keyHandler = new KeyHandler(P1, P2, this, gameManager);
-
-
-
+        AddMouseListenerToEachBoardBlock();
         frame.addKeyListener(keyHandler);
         frame.setFocusable(true);
         frame.setVisible(true);
-
 
     }
     private BoardBlock[][] initializeBoardBlocks(boolean boardInitialize){
@@ -84,24 +80,26 @@ public class GameWindow extends JLabel{
                 for(int j = 0; j < 9;j++){
                     if(i == 0 && j == 4){
                         BoardBlock tmp = new BoardBlock("P1");
+                        tmp.setRow(i);
+                        tmp.setColumn(j);
                         upperPanel.add(tmp);
                         board[i][j] = tmp;
                         P1.setCoordinates(i, j);
                     }
                     else if(i == 8 && j == 4){
                         BoardBlock tmp = new BoardBlock("P2");
+                        tmp.setRow(i);
+                        tmp.setColumn(j);
                         upperPanel.add(tmp);
                         board[i][j] = tmp;
                         P2.setCoordinates(i, j);
-                    }else if(i == 4 && j == 5){
-                        BoardBlock tmp = new BoardBlock("B");
-                        upperPanel.add(tmp);
-                        board[i][j] = tmp;
-                    }
-                    else{
+                    } else {
                         BoardBlock tmp = new BoardBlock("E");
+                        tmp.setRow(i);
+                        tmp.setColumn(j);
                         upperPanel.add(tmp);
                         board[i][j] = tmp;
+
                     }
 
                 }
@@ -109,6 +107,14 @@ public class GameWindow extends JLabel{
             return board;
         }
 
+    }
+
+    public void AddMouseListenerToEachBoardBlock(){
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                board[i][j].addMouseListener(new MouseHandler(board[i][j], gameManager));
+            }
+        }
     }
 
     public void repaintBoard(int tempP1x, int tempP1y, int tempP2x, int tempP2y, int whichPlayer, boolean illegalMove){

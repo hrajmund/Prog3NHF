@@ -1,0 +1,10 @@
+0;0
+E E E E P1 E E E E
+E E E E E E E E E
+E E E E E E E E E
+E E E E E E E E E
+E E E E E B E E E
+E E E E E E E E E
+E E E E E E E E E
+E E E E E E E E E
+E E E E P2 E E E E
