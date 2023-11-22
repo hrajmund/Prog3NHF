@@ -1,36 +1,23 @@
 
 k
-java:S1192!"NDefine a constant instead of duplicating this literal "Illegal move!" 8 times.(™ÍéÎ8ñğìÀ½1
-r	java:S117
-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¨æ¸ıÿÿÿÿ8ñğìÀ½1
-r	java:S117
-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¨æ¸ıÿÿÿÿ8òğìÀ½1
-m
-java:S1301Y"KReplace this "switch" statement by "if" statements to increase readability.(ù‚Óøÿÿÿÿ8Ø¦¾Â½1
-w
-java:S1104"UMake upPressed a static final constant or non-public and provide accessors if needed.(Ë¿á†øÿÿÿÿ8òğìÀ½1
-y
-java:S1104"WMake downPressed a static final constant or non-public and provide accessors if needed.(Ë¿á†øÿÿÿÿ8òğìÀ½1
-y
-java:S1104"WMake leftPressed a static final constant or non-public and provide accessors if needed.(Ë¿á†øÿÿÿÿ8óğìÀ½1
-z
-java:S1104"XMake rightPressed a static final constant or non-public and provide accessors if needed.(Ë¿á†øÿÿÿÿ8óğìÀ½1
-i	java:S116"MRename this field "P1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ùà‰8şğìÀ½1
-i	java:S116"MRename this field "P2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹”Èö8şğìÀ½1
+java:S1192'"NDefine a constant instead of duplicating this literal "Illegal move!" 8 times.(™ÍéÎ8¬ÙÎÇ½1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¨æ¸ıÿÿÿÿ8­ÙÎÇ½1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¨æ¸ıÿÿÿÿ8­ÙÎÇ½1
+i	java:S116"MRename this field "P1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ùà‰8ÃÙÎÇ½1
+i	java:S116"MRename this field "P2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹”Èö8ÃÙÎÇ½1
 
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8ÿğìÀ½1
-j
-java:S1659"HDeclare "downPressed" and all following declarations on a separate line.(Ë¿á†øÿÿÿÿ8€ñìÀ½1
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8ÃÙÎÇ½1
+a
+java:S1659"DDeclare "tempP1y" and all following declarations on a separate line.(Â‚¾8ÄÙÎÇ½1
 n
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(İ¼õA8Ô¾Â½1
-C	java:S131""Add a default case to this switch.(ù‚Óøÿÿÿÿ8†ñìÀ½1
-G	java:S106!"+Replace this use of System.out by a logger.(™ÍéÎ8ˆñìÀ½1
-G	java:S106)"+Replace this use of System.out by a logger.(™ÍéÎ8ŠñìÀ½1
-G	java:S1061"+Replace this use of System.out by a logger.(™ÍéÎ8‹ñìÀ½1
-G	java:S1069"+Replace this use of System.out by a logger.(™ÍéÎ8°ÁïÀ½1
-G	java:S106@"+Replace this use of System.out by a logger.(™ÍéÎ8¤Ô¾Â½1
-G	java:S106F"+Replace this use of System.out by a logger.(™ÍéÎ8¤Ô¾Â½1
-G	java:S106L"+Replace this use of System.out by a logger.(™ÍéÎ8¥Ô¾Â½1
-G	java:S106R"+Replace this use of System.out by a logger.(™ÍéÎ8¦Ô¾Â½1
-J	java:S108Y")Either remove or fill this block of code.(ù‚Óøÿÿÿÿ8‰§¾Â½1
-C	java:S131Y""Add a default case to this switch.(ù‚Óøÿÿÿÿ8ŒñìÀ½1
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(İ¼õA8ÆÙÎÇ½1
+C	java:S131!""Add a default case to this switch.(ù‚Óøÿÿÿÿ8ÈÙÎÇ½1
+G	java:S106'"+Replace this use of System.out by a logger.(™ÍéÎ8ÉÙÎÇ½1
+G	java:S1060"+Replace this use of System.out by a logger.(™ÍéÎ8ÉÙÎÇ½1
+G	java:S1068"+Replace this use of System.out by a logger.(™ÍéÎ8ÊÙÎÇ½1
+G	java:S106@"+Replace this use of System.out by a logger.(™ÍéÎ8ëÖüÇ½1
+G	java:S106H"+Replace this use of System.out by a logger.(™ÍéÎ8ìÖüÇ½1
+G	java:S106O"+Replace this use of System.out by a logger.(™ÍéÎ8ìÖüÇ½1
+G	java:S106V"+Replace this use of System.out by a logger.(™ÍéÎ8íÖüÇ½1
+G	java:S106]"+Replace this use of System.out by a logger.(™ÍéÎ8îÖüÇ½1
+L	java:S106c"+Replace this use of System.out by a logger.(§õ¬Îüÿÿÿÿ8îÖüÇ½1

@@ -9,8 +9,8 @@ public class MenuWindow extends JFrame{
     private final JPanel upperPanel;
     private final JPanel lowerPanel;
     private final JFrame frame;
+    private final JTextField boardName;
     MenuWindow(){
-
         frame = new JFrame("Quoridor");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600,600);
@@ -27,8 +27,10 @@ public class MenuWindow extends JFrame{
         End.setSize(100,50);
         Start.addActionListener(new StartEventListener());
         End.addActionListener(new EndEventListener());
+        boardName = new JTextField(20);
 
         upperPanel.add(Start);
+        upperPanel.add(boardName);
         lowerPanel.add(End);
 
         frame.add(upperPanel);
@@ -39,7 +41,13 @@ public class MenuWindow extends JFrame{
     public class StartEventListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            GameWindow gameWindow = new GameWindow("P1", "P2");
+            boolean boardInit = false;
+            String inputBoard = "";
+            if(!boardName.getText().isEmpty()){
+                boardInit = true;
+                inputBoard = boardName.getText();
+            }
+            GameWindow gameWindow = new GameWindow("P1", "P2", inputBoard, boardInit);
             frame.dispose();
         }
     }

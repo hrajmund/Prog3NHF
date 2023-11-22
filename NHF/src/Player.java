@@ -32,15 +32,39 @@ public class Player {
     }
 
     public void moveLeft(){
+        System.out.println(this.getY());
         y -= 1;
+        System.out.println(this.getY());
     }
-    public void moveRight(){
-        y += 1;
+    public void moveRight()
+    {
+        x--;
+        y++;
     }
-    public void moveUp(){
-        x += 1;
+    public void moveUp(int whichPlayer){
+        x--;
+        y--;
     }
-    public void moveDown(){
+    public void moveDown(int whichPlayer){
+        switch (whichPlayer){
+            case 1: {
+                if(this.y != 0){
+                    x++;
+                    y++;
+                }
+                break;
+            }
+            case 2: {
+                if(this.y != 8){
+                    x++;
+                    y++;
+                }
+                break;
+            }
+        }
+        /*
+        System.out.println(this.getX());
         x -= 1;
+        System.out.println(this.getX());*/
     }
 }

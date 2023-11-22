@@ -1,22 +1,27 @@
 
-i	java:S116"MRename this field "P1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş•åë8•×…Â½1
-i	java:S116"MRename this field "P2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş•åë8–×…Â½1
+m
+java:S1301Y"KReplace this "switch" statement by "if" statements to increase readability.(ç¬š•şÿÿÿÿ8…ùÃ½1
+i	java:S116"MRename this field "P1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş•åë8§‡ùÃ½1
+i	java:S116"MRename this field "P2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş•åë8§‡ùÃ½1
 =
-java:S1659" Declare "P2" on a separate line.(ş•åë8™×…Â½1
+java:S1659" Declare "P2" on a separate line.(ş•åë8«‡ùÃ½1
 A
-java:S1948"$Make "P1" transient or serializable.(ş•åë8š×…Â½1
+java:S1948"$Make "P1" transient or serializable.(ş•åë8«‡ùÃ½1
 A
-java:S1948"$Make "P2" transient or serializable.(ş•åë8š×…Â½1
+java:S1948"$Make "P2" transient or serializable.(ş•åë8«‡ùÃ½1
 O
-java:S1948"-Make "gameManager" transient or serializable.(Áà¼‘üÿÿÿÿ8š×…Â½1
+java:S1948"-Make "gameManager" transient or serializable.(Áà¼‘üÿÿÿÿ8«‡ùÃ½1
 f
-java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8×…Â½1
+java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8­‡ùÃ½1
 [
-java:S11177"9Rename "board" which hides the field declared at line 12.(Á‚Ü¾ùÿÿÿÿ8£×…Â½1
-X	java:S125c"<This block of commented-out lines of code should be removed.(ÈÊ“À8ª×…Â½1
+java:S11177"9Rename "board" which hides the field declared at line 12.(Á‚Ü¾ùÿÿÿÿ8²‡ùÃ½1
+o
+java:S3776S"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ó·¼Ù8´‡ùÃ½1
+C	java:S131Y""Add a default case to this switch.(ç¬š•şÿÿÿÿ8µ‡ùÃ½1
+X	java:S125m"<This block of commented-out lines of code should be removed.(ÈÊ“À8æ›ùÃ½1
 T
-java:S1128"7Remove this unused import 'java.awt.event.ActionEvent'.(Úù“‘8ªÂÂ½1
+java:S1128"7Remove this unused import 'java.awt.event.ActionEvent'.(Úù“‘8¶‡ùÃ½1
 W
-java:S1128":Remove this unused import 'java.awt.event.ActionListener'.(Ìä¹8ªÂÂ½1
+java:S1128":Remove this unused import 'java.awt.event.ActionListener'.(Ìä¹8¶‡ùÃ½1
 Q
-java:S1128"4Remove this unused import 'java.util.EventListener'.(óü¬É8ªÂÂ½1
+java:S1128"4Remove this unused import 'java.util.EventListener'.(óü¬É8¶‡ùÃ½1

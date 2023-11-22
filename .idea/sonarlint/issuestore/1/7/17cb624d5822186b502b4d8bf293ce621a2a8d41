@@ -1,7 +1,15 @@
 
+m
+java:S13010"KReplace this "switch" statement by "if" statements to increase readability.(ç¬š•şÿÿÿÿ8±¯îÇ½1
 A
-java:S1659"Declare "y" on a separate line.(±šß¯ùÿÿÿÿ8û¦‡û¼1
+java:S1659"Declare "y" on a separate line.(±šß¯ùÿÿÿÿ8ËåŸÇ½1
+L	java:S106#"+Replace this use of System.out by a logger.(ÕŸÒ¸ÿÿÿÿÿ8ÎåŸÇ½1
+L	java:S106%"+Replace this use of System.out by a logger.(ÕŸÒ¸ÿÿÿÿÿ8ÏåŸÇ½1
+O
+java:S1172+"2Remove this unused method parameter "whichPlayer".(½‡8¦ÊïÇ½1
+C	java:S1310""Add a default case to this switch.(ç¬š•şÿÿÿÿ8¾¯îÇ½1
+W	java:S125A"<This block of commented-out lines of code should be removed.(Ñõ¦I8¾¯îÇ½1
 E
-java:S1068"(Remove this unused "name" private field.(Ë¥¼8€§‡û¼1
+java:S1068"(Remove this unused "name" private field.(Ë¥¼8ÒåŸÇ½1
 W
-java:S1068"5Remove this unused "numberOfThePlayer" private field.(‹×–©ûÿÿÿÿ8€§‡û¼1
+java:S1068"5Remove this unused "numberOfThePlayer" private field.(‹×–©ûÿÿÿÿ8ÓåŸÇ½1
