@@ -21,7 +21,7 @@ public class GameWindow extends JLabel{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800,800);
         frame.setLayout(new BorderLayout());
-        frame.setResizable(true);
+        frame.setResizable(false);
 
         saveButton = new JButton("Save");
         saveButton.addActionListener(new SaveEventListener());
@@ -51,9 +51,9 @@ public class GameWindow extends JLabel{
         if(boardInitialize){
             gameManager = new GameManager(new File(inputBoard + ".txt"));
             playerScore = gameManager.getPlayerScore();
-            board = initializeBoardBlocks(boardInitialize);
+            board = initializeBoardBlocks(true);
         }else{
-            board = initializeBoardBlocks(boardInitialize);
+            board = initializeBoardBlocks(false);
             playerScore = new int[2];
             gameManager = new GameManager(board, playerScore);
         }
@@ -77,6 +77,7 @@ public class GameWindow extends JLabel{
                     upperPanel.add(board[i][j]);
                 }
             }
+            return board;
         }else{
             BoardBlock[][] board = new BoardBlock[9][9];
             for (int i = 0; i < 9; i++){
@@ -105,8 +106,9 @@ public class GameWindow extends JLabel{
 
                 }
             }
+            return board;
         }
-        return board;
+
     }
 
     public void repaintBoard(int tempP1x, int tempP1y, int tempP2x, int tempP2y, int whichPlayer, boolean illegalMove){

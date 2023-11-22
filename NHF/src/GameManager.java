@@ -12,9 +12,7 @@ public class GameManager {
         String wd = System.getProperty("user.dir");
         playerScore = new int[2];
         board = new BoardBlock[9][9];
-        //String filePath = "../boards/" + gameFile.getName();
         String filePath = wd + "/boards/" + gameFile.getName();
-        System.out.println(filePath);
 
         try {
             FileReader fileReader = new FileReader(filePath);
@@ -70,12 +68,20 @@ public class GameManager {
         return playerScore;
     }
 
-    public boolean StepPlayer(Player player, int x, int y){
-        if(board[x][y].getState().equals("E")){
-            player.setCoordinates(x,y);
-            return true;
-        }else{
-            return false;
+    public boolean StepPlayer(int x, int y){
+        return board[x][y].getState().equals("E");
+    }
+
+
+    //For debugging purposes
+    public String findPlayer(Player temp){
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                if(board[i][j].getState().equals(temp.getName())){
+                    return "(" + i + "," + j +")";
+                }
+            }
         }
+        return "";
     }
 }

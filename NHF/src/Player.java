@@ -18,7 +18,7 @@ public class Player {
     public int getY(){
         return y;
     }
-
+    public String getName(){return name;}
     public void setX(int x){
         this.x = x;
     }
@@ -31,40 +31,8 @@ public class Player {
         this.y = y;
     }
 
-    public void moveLeft(){
-        System.out.println(this.getY());
-        y -= 1;
-        System.out.println(this.getY());
-    }
-    public void moveRight()
-    {
-        x--;
-        y++;
-    }
-    public void moveUp(int whichPlayer){
-        x--;
-        y--;
-    }
-    public void moveDown(int whichPlayer){
-        switch (whichPlayer){
-            case 1: {
-                if(this.y != 0){
-                    x++;
-                    y++;
-                }
-                break;
-            }
-            case 2: {
-                if(this.y != 8){
-                    x++;
-                    y++;
-                }
-                break;
-            }
-        }
-        /*
-        System.out.println(this.getX());
-        x -= 1;
-        System.out.println(this.getX());*/
-    }
+    public void moveLeft(){ y--; }
+    public void moveRight() { y++; }
+    public void moveUp() { x--; }
+    public void moveDown() { x++; }
 }
