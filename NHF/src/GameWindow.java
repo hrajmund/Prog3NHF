@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,10 @@ public class GameWindow extends JLabel{
     private final BoardBlock[][] board;
     private final int[] playerScore;
     private final JButton saveButton;
+    private final JTextArea p1BlockScore;
+    private final JTextArea p2BlockScore;
+    private final JTextArea p1NameScore;
+    private final JTextArea p2NameScore;
 
     GameWindow(String p1Name, String p2Name, String inputBoard, boolean boardInitialize){
         frame = new JFrame("Quoridor");
@@ -55,11 +60,29 @@ public class GameWindow extends JLabel{
             board = initializeBoardBlocks(false);
             playerScore = new int[2];
             playerScore[0] = playerScore[1] = 10;
-            gameManager = new GameManager(board, playerScore);
+            gameManager = new GameManager(board, playerScore, P1, P2);
         }
+
+        p1BlockScore = new JTextArea(Integer.toString(playerScore[0]));
+        p1NameScore = new JTextArea(p1Name);
+        p2BlockScore = new JTextArea(Integer.toString(playerScore[1]));
+        p2NameScore = new JTextArea(p2Name);
+
+        p1BlockScore.setFocusable(false);
+        p2BlockScore.setFocusable(false);
+
+        p1NameScore.setFocusable(false);
+        p2NameScore.setFocusable(false);
+
+        westPanel.add(p1BlockScore);
+        westPanel.add(p1NameScore);
+
+        eastPanel.add(p2BlockScore);
+        eastPanel.add(p2NameScore);
 
         KeyHandler keyHandler = new KeyHandler(P1, P2, this, gameManager);
         AddMouseListenerToEachBoardBlock();
+
         frame.addKeyListener(keyHandler);
         frame.setFocusable(true);
         frame.setVisible(true);
@@ -117,10 +140,15 @@ public class GameWindow extends JLabel{
         }
     }
 
-    public void repaintBoard(int tempP1x, int tempP1y, int tempP2x, int tempP2y, int whichPlayer, boolean illegalMove){
-        if(illegalMove){
-            return;
+    public int repaintBoard(int tempP1x, int tempP1y, int tempP2x, int tempP2y, int whichPlayer, boolean illegalMove, int nextPlayer){
+        if(nextPlayer != whichPlayer){
+            IllegalMoveWindow illegalMoveWindow = new IllegalMoveWindow(1);
+            return nextPlayer;
+        }else if(illegalMove){
+            IllegalMoveWindow illegalMoveWindow = new IllegalMoveWindow(2);
+            return nextPlayer;
         }
+
         for (int i = 0; i < 9; i++){
             for(int j = 0; j < 9;j++){
                 switch (whichPlayer){
@@ -141,6 +169,7 @@ public class GameWindow extends JLabel{
                 }
             }
         }
+        return nextPlayer = (nextPlayer == 1) ? 2 : 1;
     }
     public class SaveEventListener implements ActionListener{
         @Override

@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
-    private int tempP1x, tempP1y, tempP2x, tempP2y, whichPlayer;
+    private int tempP1x, tempP1y, tempP2x, tempP2y;
     private boolean illegalMove;
     private Player P1;
     private Player P2;
@@ -25,101 +25,103 @@ public class KeyHandler implements KeyListener {
         tempP1y = P1.getY();
         tempP2x = P2.getX();
         tempP2y = P2.getY();
-        whichPlayer = 0;
         illegalMove = false;
-
-        try {
-            switch (e.getKeyCode()) {
-                case KeyEvent.VK_A: {
-                    whichPlayer = 1;
-                    if (gameManager.StepPlayer(P1.getX(), P1.getY() - 1)) {
-                        P1.moveLeft();
-                    } else {
-                        System.out.println("Illegal move!");
-                        illegalMove = true;
+        if(gameManager.getNextPlayer() == 1){
+            try{
+                switch (e.getKeyCode()){
+                    case KeyEvent.VK_A: {
+                        gameManager.setWhichPlayer(1);
+                        if (gameManager.StepPlayer(P1.getX(), P1.getY() - 1)) {
+                            P1.moveLeft();
+                        } else {
+                            illegalMove = true;
+                        }
+                        break;
                     }
-                    break;
-                }
-                case KeyEvent.VK_D: {
-                    whichPlayer = 1;
-                    if (gameManager.StepPlayer(P1.getX(), P1.getY() + 1)) {
-                        P1.moveRight();
-                    } else {
-                        System.out.println("Illegal move!");
-                        illegalMove = true;
+                    case KeyEvent.VK_D: {
+                        gameManager.setWhichPlayer(1);
+                        if (gameManager.StepPlayer(P1.getX(), P1.getY() + 1)) {
+                            P1.moveRight();
+                        } else {
+                            illegalMove = true;
+                        }
+                        break;
                     }
-                    break;
-                }
-                case KeyEvent.VK_S: {
-                    whichPlayer = 1;
-                    if (gameManager.StepPlayer(P1.getX() + 1, P1.getY())) {
-                        P1.moveDown();
-                    } else {
-                        System.out.println("Illegal move!");
-                        illegalMove = true;
+                    case KeyEvent.VK_S: {
+                        gameManager.setWhichPlayer(1);
+                        if (gameManager.StepPlayer(P1.getX() + 1, P1.getY())) {
+                            P1.moveDown();
+                        } else {
+                            illegalMove = true;
+                        }
+                        break;
                     }
-                    break;
-                }
-                case KeyEvent.VK_W: {
-                    whichPlayer = 1;
-                    if (gameManager.StepPlayer(P1.getX() - 1, P1.getY())) {
-                        P1.moveUp();
-                    } else {
-                        System.out.println("Illegal move!");
-                        illegalMove = true;
+                    case KeyEvent.VK_W: {
+                        gameManager.setWhichPlayer(1);
+                        if (gameManager.StepPlayer(P1.getX() - 1, P1.getY())) {
+                            P1.moveUp();
+                        } else {
+                            illegalMove = true;
+                        }
+                        break;
                     }
-                    break;
+                    default: break;
                 }
-                case KeyEvent.VK_LEFT: {
-                    whichPlayer = 2;
-                    if (gameManager.StepPlayer(P2.getX(), P2.getY() - 1)) {
-                        P2.moveLeft();
-                    } else {
-                        System.out.println("Illegal move!");
-                        illegalMove = true;
-                    }
-                    break;
-                }
-                case KeyEvent.VK_RIGHT: {
-                    whichPlayer = 2;
-                    if (gameManager.StepPlayer(P2.getX(), P2.getY() + 1)) {
-                        P2.moveRight();
-                    } else {
-                        System.out.println("Illegal move!");
-                        illegalMove = true;
-                    }
-                    break;
-                }
-                case KeyEvent.VK_DOWN: {
-                    whichPlayer = 2;
-                    if (gameManager.StepPlayer(P2.getX() + 1, P2.getY())) {
-                        P2.moveDown();
-                    } else {
-                        System.out.println("Illegal move!");
-                        illegalMove = true;
-                    }
-                    break;
-                }
-                case KeyEvent.VK_UP: {
-                    whichPlayer = 2;
-                    if (gameManager.StepPlayer(P2.getX() - 1, P2.getY())) {
-                        P2.moveUp();
-                    } else {
-                        System.out.println("Illegal move!");
-                        illegalMove = true;
-                    }
-                    break;
-                }
+            }catch (Exception excep){
+                System.out.println(excep);
             }
-        }catch (Exception excep){
-            System.out.println(excep);
+        }else if(gameManager.getNextPlayer() == 2){
+            //whichPlayer = 2;
+            try{
+                switch (e.getKeyCode()){
+                    case KeyEvent.VK_LEFT: {
+                        gameManager.setWhichPlayer(2);
+                        if (gameManager.StepPlayer(P2.getX(), P2.getY() - 1)) {
+                            P2.moveLeft();
+                        } else {
+                            illegalMove = true;
+                        }
+                        break;
+                    }
+                    case KeyEvent.VK_RIGHT: {
+                        gameManager.setWhichPlayer(2);
+                        if (gameManager.StepPlayer(P2.getX(), P2.getY() + 1)) {
+                            P2.moveRight();
+                        } else {
+                            illegalMove = true;
+                        }
+                        break;
+                    }
+                    case KeyEvent.VK_DOWN: {
+                        gameManager.setWhichPlayer(2);
+                        if (gameManager.StepPlayer(P2.getX() + 1, P2.getY())) {
+                            P2.moveDown();
+                        } else {
+                            illegalMove = true;
+                        }
+                        break;
+                    }
+                    case KeyEvent.VK_UP: {
+                        gameManager.setWhichPlayer(2);
+                        if (gameManager.StepPlayer(P2.getX() - 1, P2.getY())) {
+                            P2.moveUp();
+                        } else {
+                            illegalMove = true;
+                        }
+                        break;
+                    }
+                    default: break;
+                }
+            }catch (Exception excep){
+                System.out.println(excep);
+            }
         }
-        gameWindow.repaintBoard(tempP1x, tempP1y, tempP2x, tempP2y, whichPlayer, illegalMove);
+        gameManager.setNextPlayer(gameWindow.repaintBoard(tempP1x, tempP1y, tempP2x, tempP2y, gameManager.getWhichPlayer(), illegalMove, gameManager.getNextPlayer()));
+        illegalMove = false;
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        gameWindow.repaintBoard(tempP1x, tempP1y, tempP2x, tempP2y, whichPlayer, illegalMove);
-        illegalMove = false;
+
     }
 }

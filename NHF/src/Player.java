@@ -25,6 +25,7 @@ public class Player {
     public void setY(int y){
         this.y = y;
     }
+    public void setName(String name) { this.name = name; }
 
     public void setCoordinates(int x, int y){
         this.x = x;

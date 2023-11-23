@@ -3,9 +3,17 @@ import java.io.*;
 public class GameManager {
     BoardBlock[][] board;
     int[] playerScore;
-    GameManager(BoardBlock[][] board, int[] playerScore){
+    private int whichPlayer;
+    private int nextPlayer;
+    private Player P1;
+    private Player P2;
+    GameManager(BoardBlock[][] board, int[] playerScore, Player P1, Player P2){
        this.board = board;
        this.playerScore = playerScore;
+       whichPlayer = 0;
+       nextPlayer = 1;
+       this.P1 = P1;
+       this.P2 = P2;
     }
 
     GameManager(File gameFile) {
@@ -22,6 +30,8 @@ public class GameManager {
             String[] playerData = line.split(";");
             playerScore[0] = Integer.parseInt(playerData[0]);
             playerScore[1] = Integer.parseInt(playerData[1]);
+            P1 = new Player(playerData[2], 1);
+            P2 = new Player(playerData[3], 2);
 
             int rowCounter = 0;
             while ((line = bufferedReader.readLine()) != null) {
@@ -37,6 +47,8 @@ public class GameManager {
         } catch (IOException e) {
             System.err.println(e);
         }
+        whichPlayer = 0;
+        nextPlayer = 1;
     }
 
     public void save(String boardName, BoardBlock[][] saveBoard, int savePlayerScore[]) {
@@ -83,5 +95,42 @@ public class GameManager {
             }
         }
         return "";
+    }
+
+    public int getNextPlayer() {
+        return nextPlayer;
+    }
+    public int getWhichPlayer(){
+        return whichPlayer;
+    }
+
+    public void setNextPlayer(int nextPlayer){
+        this.nextPlayer = nextPlayer;
+    }
+
+    public void setWhichPlayer(int whichPlayer){
+        this.whichPlayer = whichPlayer;
+    }
+
+    public Player getP1(){
+        return P1;
+    }
+
+    public Player getP2(){
+        return P2;
+    }
+
+    public void P1PutBlockOnTheBoard(){
+        playerScore[0] -= 1;
+    }
+    public void P2PutBlockOnTheBoard(){
+        playerScore[1] -= 1;
+    }
+
+    public void P1PickBlockOffTheBoard(){
+        playerScore[0] += 1;
+    }
+    public void P2PickBlockOffTheBoard(){
+        playerScore[1] += 1;
     }
 }
