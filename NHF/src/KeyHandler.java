@@ -32,7 +32,7 @@ public class KeyHandler implements KeyListener {
                     case KeyEvent.VK_A: {
                         gameManager.setWhichPlayer(1);
                         if (gameManager.StepPlayer(P1.getX(), P1.getY() - 1)) {
-                            P1.moveLeft();
+                            gameManager.getP1().moveLeft();
                         } else {
                             illegalMove = true;
                         }
@@ -41,7 +41,7 @@ public class KeyHandler implements KeyListener {
                     case KeyEvent.VK_D: {
                         gameManager.setWhichPlayer(1);
                         if (gameManager.StepPlayer(P1.getX(), P1.getY() + 1)) {
-                            P1.moveRight();
+                            gameManager.getP1().moveRight();
                         } else {
                             illegalMove = true;
                         }
@@ -50,7 +50,7 @@ public class KeyHandler implements KeyListener {
                     case KeyEvent.VK_S: {
                         gameManager.setWhichPlayer(1);
                         if (gameManager.StepPlayer(P1.getX() + 1, P1.getY())) {
-                            P1.moveDown();
+                            gameManager.getP1().moveDown();
                         } else {
                             illegalMove = true;
                         }
@@ -59,7 +59,7 @@ public class KeyHandler implements KeyListener {
                     case KeyEvent.VK_W: {
                         gameManager.setWhichPlayer(1);
                         if (gameManager.StepPlayer(P1.getX() - 1, P1.getY())) {
-                            P1.moveUp();
+                            gameManager.getP1().moveUp();
                         } else {
                             illegalMove = true;
                         }
@@ -77,7 +77,7 @@ public class KeyHandler implements KeyListener {
                     case KeyEvent.VK_LEFT: {
                         gameManager.setWhichPlayer(2);
                         if (gameManager.StepPlayer(P2.getX(), P2.getY() - 1)) {
-                            P2.moveLeft();
+                            gameManager.getP2().moveLeft();
                         } else {
                             illegalMove = true;
                         }
@@ -86,7 +86,7 @@ public class KeyHandler implements KeyListener {
                     case KeyEvent.VK_RIGHT: {
                         gameManager.setWhichPlayer(2);
                         if (gameManager.StepPlayer(P2.getX(), P2.getY() + 1)) {
-                            P2.moveRight();
+                            gameManager.getP2().moveRight();
                         } else {
                             illegalMove = true;
                         }
@@ -95,7 +95,7 @@ public class KeyHandler implements KeyListener {
                     case KeyEvent.VK_DOWN: {
                         gameManager.setWhichPlayer(2);
                         if (gameManager.StepPlayer(P2.getX() + 1, P2.getY())) {
-                            P2.moveDown();
+                            gameManager.getP2().moveDown();
                         } else {
                             illegalMove = true;
                         }
@@ -104,7 +104,7 @@ public class KeyHandler implements KeyListener {
                     case KeyEvent.VK_UP: {
                         gameManager.setWhichPlayer(2);
                         if (gameManager.StepPlayer(P2.getX() - 1, P2.getY())) {
-                            P2.moveUp();
+                            gameManager.getP2().moveUp();
                         } else {
                             illegalMove = true;
                         }
@@ -116,8 +116,14 @@ public class KeyHandler implements KeyListener {
                 System.out.println(excep);
             }
         }
+
         gameManager.setNextPlayer(gameWindow.repaintBoard(tempP1x, tempP1y, tempP2x, tempP2y, gameManager.getWhichPlayer(), illegalMove, gameManager.getNextPlayer()));
         illegalMove = false;
+
+        System.out.println(gameManager.getPlayer().getY());
+        if(gameManager.GameOver(gameManager.getPlayer())) {
+            GameOverWindow gameOverWindow = new GameOverWindow(gameManager.getPlayer());
+        }
     }
 
     @Override

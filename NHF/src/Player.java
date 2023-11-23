@@ -36,4 +36,13 @@ public class Player {
     public void moveRight() { y++; }
     public void moveUp() { x--; }
     public void moveDown() { x++; }
+
+    public int getNumberOfThePlayer() {
+        return numberOfThePlayer;
+    }
+
+    public void setNumberOfThePlayer(int numberOfThePlayer) {
+        this.numberOfThePlayer = numberOfThePlayer;
+    }
+
 }

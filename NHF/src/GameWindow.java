@@ -15,6 +15,7 @@ public class GameWindow extends JLabel{
     private final GameManager gameManager;
     private final BoardBlock[][] board;
     private final int[] playerScore;
+    private int startingPlayer = 1;
     private final JButton saveButton;
     private final JTextArea p1BlockScore;
     private final JTextArea p2BlockScore;
@@ -135,7 +136,7 @@ public class GameWindow extends JLabel{
     public void AddMouseListenerToEachBoardBlock(){
         for(int i = 0; i < 9; i++){
             for(int j = 0; j < 9; j++){
-                board[i][j].addMouseListener(new MouseHandler(board[i][j], gameManager));
+                board[i][j].addMouseListener(new MouseHandler(board[i][j], gameManager, this));
             }
         }
     }
@@ -176,5 +177,24 @@ public class GameWindow extends JLabel{
         public void actionPerformed(ActionEvent e){
             SaveWindow save = new SaveWindow(board, playerScore, gameManager);
         }
+    }
+
+    public void setPutBlockPlayerScore(int whichPlayer){
+       if (whichPlayer == 1){
+           int temp = Integer.parseInt(p1BlockScore.getText()) - 1;
+           p1BlockScore.setText(Integer.toString(temp));
+       }else{
+           int temp = Integer.parseInt(p2BlockScore.getText()) - 1;
+           p2BlockScore.setText(Integer.toString(temp));
+       }
+    }
+    public void setPickBlockPlayerScore(int whichPlayer){
+       if (whichPlayer == 1){
+           int temp = Integer.parseInt(p1BlockScore.getText()) + 2;
+           p1BlockScore.setText(Integer.toString(temp));
+       }else{
+           int temp = Integer.parseInt(p2BlockScore.getText()) + 2;
+           p2BlockScore.setText(Integer.toString(temp));
+       }
     }
 }
