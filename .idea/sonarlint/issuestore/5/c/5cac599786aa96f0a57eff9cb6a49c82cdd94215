@@ -1,9 +1,7 @@
 
 j	java:S116"PRename this field "Start" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âö²äøÿÿÿÿ
 c	java:S116"NRename this field "End" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ‡›Ò
+m	java:S116"QRename this field "P1Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(í—‚£8ŞĞÅí¿1
+m	java:S116"QRename this field "P2Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ı¼‡8ŞĞÅí¿1
 _
-java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´
-`
-java:S1854*">Remove this useless assignment to local variable "gameWindow".(„Äó¨ùÿÿÿÿ8™úû¼1
-Q
-java:S1481*"/Remove this unused "gameWindow" local variable.(„Äó¨ùÿÿÿÿ8‘™úû¼1
+java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´

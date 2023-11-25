@@ -7,6 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="junit.jupiter" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="fd7cb11b-247d-4edc-b185-39d47ab5e983" />

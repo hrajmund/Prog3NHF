@@ -13,3 +13,9 @@ G
 NHF/src/KeyHandler.java,e/e/ee0ba994e0e5554f3cef76f431c798f3933f9cf8
 H
 NHF/src/GameManager.java,b/5/b5308811956d74cc1450e46462cdec56977b3437
+K
+NHF/src/GameOverWindow.java,f/0/f0f1f9f06de9ec2b337e1ebf93bbedbd4e35bd26
+N
+NHF/src/IllegalMoveWindow.java,8/5/85170801bf883c61bdb622c68089866f200bec64
+I
+NHF/src/MouseHandler.java,4/4/4425e5b250e865f8d39665f9308432f242ee9cd5

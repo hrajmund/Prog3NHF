@@ -1,5 +1,20 @@
 
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷ÙŒá8‹×Åí¿1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷ÙŒá8Œ×Åí¿1
+i
+java:S2095:"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(ÍŠãş8áÛÅí¿1
 n
-java:S2095"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(µÎ Àúÿÿÿÿ8äÁ½1
-L	java:S106("+Replace this use of System.err by a logger.(Şàš¬øÿÿÿÿ8§äÁ½1
-j	java:S100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£à÷½8§äÁ½1
+java:S2095"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(µÎ Àúÿÿÿÿ8äÁ½1
+i	java:S116
+"MRename this field "P1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ùà‰8âÛÅí¿1
+i	java:S116"MRename this field "P2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹”Èö8ãÛÅí¿1
+L	java:S1062"+Replace this use of System.err by a logger.(Şàš¬øÿÿÿÿ8§äÁ½1
+G
+java:S11978"*Move the array designators [] to the type.(¦æ¡÷8ÊÜÅí¿1
+G	java:S106J"+Replace this use of System.err by a logger.(„ê«ñ8ÛÜÅí¿1
+j	java:S100U"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó“ôÇ8İÜÅí¿1
+t
+java:S3776l"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¦µ¾¦øÿÿÿÿ8ãÜÅí¿1
+p	java:S100‘"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â—Âƒøÿÿÿÿ8†İÅí¿1
+p	java:S100À"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢”ÂÈÿÿÿÿÿ8šİÅí¿1
+p	java:S100È"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂÂ÷ñûÿÿÿÿ8›İÅí¿1

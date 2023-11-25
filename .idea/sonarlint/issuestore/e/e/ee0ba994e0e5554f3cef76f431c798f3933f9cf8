@@ -1,23 +1,31 @@
 
-k
-java:S1192'"NDefine a constant instead of duplicating this literal "Illegal move!" 8 times.(™ÍéÎ8¬ÙÎÇ½1
 r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¨æ¸ıÿÿÿÿ8­ÙÎÇ½1
 r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¨æ¸ıÿÿÿÿ8­ÙÎÇ½1
 i	java:S116"MRename this field "P1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ùà‰8ÃÙÎÇ½1
 i	java:S116"MRename this field "P2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹”Èö8ÃÙÎÇ½1
 
 java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8ÃÙÎÇ½1
-a
-java:S1659"DDeclare "tempP1y" and all following declarations on a separate line.(Â‚¾8ÄÙÎÇ½1
+¤
+java:S1186‚"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Â½€øÿÿÿÿ8ˆÒÅí¿1
+f
+java:S1659"DDeclare "tempP1y" and all following declarations on a separate line.(¤Å»Æùÿÿÿÿ8ÄÙÎÇ½1
+w
+java:S1450"ZRemove the "illegalMove" field and declare it as a local variable in the relevant methods.(ı‚¡ï8ÒÅí¿1
+x
+java:S1450"VRemove the "tempP1x" field and declare it as a local variable in the relevant methods.(¤Å»Æùÿÿÿÿ8ÒÅí¿1
+x
+java:S1450"VRemove the "tempP1y" field and declare it as a local variable in the relevant methods.(¤Å»Æùÿÿÿÿ8‘ÒÅí¿1
+x
+java:S1450"VRemove the "tempP2x" field and declare it as a local variable in the relevant methods.(¤Å»Æùÿÿÿÿ8“ÒÅí¿1
+x
+java:S1450"VRemove the "tempP2y" field and declare it as a local variable in the relevant methods.(¤Å»Æùÿÿÿÿ8•ÒÅí¿1
 n
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(İ¼õA8ÆÙÎÇ½1
-C	java:S131!""Add a default case to this switch.(ù‚Óøÿÿÿÿ8ÈÙÎÇ½1
-G	java:S106'"+Replace this use of System.out by a logger.(™ÍéÎ8ÉÙÎÇ½1
-G	java:S1060"+Replace this use of System.out by a logger.(™ÍéÎ8ÉÙÎÇ½1
-G	java:S1068"+Replace this use of System.out by a logger.(™ÍéÎ8ÊÙÎÇ½1
-G	java:S106@"+Replace this use of System.out by a logger.(™ÍéÎ8ëÖüÇ½1
-G	java:S106H"+Replace this use of System.out by a logger.(™ÍéÎ8ìÖüÇ½1
-G	java:S106O"+Replace this use of System.out by a logger.(™ÍéÎ8ìÖüÇ½1
-G	java:S106V"+Replace this use of System.out by a logger.(™ÍéÎ8íÖüÇ½1
-G	java:S106]"+Replace this use of System.out by a logger.(™ÍéÎ8îÖüÇ½1
-L	java:S106c"+Replace this use of System.out by a logger.(§õ¬Îüÿÿÿÿ8îÖüÇ½1
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 43 to the 15 allowed.(İ¼õA8ÆÙÎÇ½1
+d
+java:S1854}"BRemove this useless assignment to local variable "gameOverWindow".(¿—ƒşÿÿÿÿ8ÒÅí¿1
+L	java:S106G"+Replace this use of System.out by a logger.(§õ¬Îüÿÿÿÿ8îÖüÇ½1
+W	java:S125J"<This block of commented-out lines of code should be removed.(Ö²;8ÁÒÅí¿1
+L	java:S106t"+Replace this use of System.out by a logger.(§õ¬Îüÿÿÿÿ8ÉÒÅí¿1
+L	java:S106{"+Replace this use of System.out by a logger.(É´Şşşÿÿÿÿ8ËÒÅí¿1
+U
+java:S1481}"3Remove this unused "gameOverWindow" local variable.(¿—ƒşÿÿÿÿ8ÕÒÅí¿1

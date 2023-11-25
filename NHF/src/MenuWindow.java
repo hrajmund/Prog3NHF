@@ -55,7 +55,7 @@ public class MenuWindow extends JFrame{
                 boardInit = true;
                 inputBoard = boardName.getText();
             }
-            GameWindow gameWindow = new GameWindow(P1Name.getText(), P2Name.getText(), inputBoard, boardInit);
+            new GameWindow(P1Name.getText(), P2Name.getText(), inputBoard, boardInit);
             frame.dispose();
         }
     }

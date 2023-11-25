@@ -1,0 +1,22 @@
+
+^
+java:S1192"HDefine a constant instead of duplicating this literal "First: " 4 times.(œ–âü
+_
+java:S1192"IDefine a constant instead of duplicating this literal "Second: " 4 times.(Ô§Ã‘
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 79 to the 15 allowed.(Ä Ïúüÿÿÿÿ
+@	java:S106"+Replace this use of System.out by a logger.(œ–âü
+@	java:S106"+Replace this use of System.out by a logger.(Ô§Ã‘
+V	java:S125""<This block of commented-out lines of code should be removed.(Ä‚ýÿÿÿÿÿ
+@	java:S106/"+Replace this use of System.out by a logger.(œ–âü
+@	java:S1061"+Replace this use of System.out by a logger.(Ô§Ã‘
+V	java:S1256"<This block of commented-out lines of code should be removed.(Ä‚ýÿÿÿÿÿ
+@	java:S106C"+Replace this use of System.out by a logger.(œ–âü
+@	java:S106E"+Replace this use of System.out by a logger.(Ô§Ã‘
+V	java:S125J"<This block of commented-out lines of code should be removed.(Ä‚ýÿÿÿÿÿ
+@	java:S106X"+Replace this use of System.out by a logger.(œ–âü
+@	java:S106Z"+Replace this use of System.out by a logger.(Ô§Ã‘
+?	java:S106`"+Replace this use of System.out by a logger.(À®ù
+V	java:S125c"<This block of commented-out lines of code should be removed.(Ä‚ýÿÿÿÿÿ
+à
+java:S6541"ÄA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 88 to 64, Complexity from 33 to 14, Nesting Level from 6 to 2, Number of Variables from 9 to 6.(Ä Ïúüÿÿÿÿ

@@ -1,6 +1,5 @@
 import java.io.*;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class GameManager {
     BoardBlock[][] board;
@@ -22,7 +21,7 @@ public class GameManager {
         String wd = System.getProperty("user.dir");
         playerScore = new int[2];
         board = new BoardBlock[9][9];
-        String filePath = wd + "/boards/" + gameFile.getName();
+        String filePath = wd + "/NHF/boards/" + gameFile.getName();
 
         try {
             FileReader fileReader = new FileReader(filePath);
@@ -32,8 +31,8 @@ public class GameManager {
             String[] playerData = line.split(";");
             playerScore[0] = Integer.parseInt(playerData[0]);
             playerScore[1] = Integer.parseInt(playerData[1]);
-            P1 = new Player(playerData[2], 1);
-            P2 = new Player(playerData[3], 2);
+            P1 = new Player(playerData[0], 1);
+            P2 = new Player(playerData[1], 2);
 
             int rowCounter = 0;
             while ((line = bufferedReader.readLine()) != null) {
@@ -86,61 +85,6 @@ public class GameManager {
         return board[x][y].getState().equals("E");
     }
 
-    public boolean canBlockBeChanged(int x, int y, String newState, int playerMakingMove, Player player1, Player player2) {
-        // Save the original state to revert back after the check
-        String originalState = board[x][y].getState();
-        board[x][y].setState(newState);
-
-        boolean pathExists;
-        if (newState.equals("B")) {
-            // Call isPathToRow with the player who is not making the move
-            pathExists = isPathToRow(playerMakingMove, player1, player2);
-        } else {
-            pathExists = true;
-        }
-
-        // Revert the state
-        board[x][y].setState(originalState);
-
-        return pathExists;
-    }
-
-    public boolean isPathToRow(int playerMakingMove, Player player1, Player player2) {
-        int targetRow = playerMakingMove == 1 ? 1 : 9; // Player 1 targets row 9, Player 2 targets row 1
-        Player currentPlayer = playerMakingMove == 1 ? player2 : player1; // The opposing player
-
-        boolean[][] visited = new boolean[board.length][board[0].length];
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{currentPlayer.getX(), currentPlayer.getY()});
-
-        while (!queue.isEmpty()) {
-            int[] position = queue.remove();
-            int x = position[0];
-            int y = position[1];
-
-            if (y == targetRow) {
-                return true;
-            }
-
-            visited[x][y] = true;
-
-            // Check adjacent positions
-            if (x > 0 && board[x - 1][y].getState().equals("E") && !visited[x - 1][y]) {
-                queue.add(new int[]{x - 1, y});
-            }
-            if (x < board.length - 1 && board[x + 1][y].getState().equals("E") && !visited[x + 1][y]) {
-                queue.add(new int[]{x + 1, y});
-            }
-            if (y > 0 && board[x][y - 1].getState().equals("E") && !visited[x][y - 1]) {
-                queue.add(new int[]{x, y - 1});
-            }
-            if (y < board[0].length - 1 && board[x][y + 1].getState().equals("E") && !visited[x][y + 1]) {
-                queue.add(new int[]{x, y + 1});
-            }
-        }
-
-        return false;
-    }
 
     public boolean GameOver(Player temp){
         if(temp == P1){
@@ -171,6 +115,9 @@ public class GameManager {
     }
     public Player getPlayer(){
         return whichPlayer == 1 ? P1 : P2;
+    }
+    public Player getPlayer(int nextPlayer){
+        return nextPlayer == 1 ? P1 : P2;
     }
 
     public void setNextPlayer(int nextPlayer){
@@ -204,4 +151,123 @@ public class GameManager {
             playerScore[1] += 2;
         }
     }
+
+    // Nested Pair class to hold two BoardBlock objects
+    public class Pair {
+        BoardBlock block1;
+        BoardBlock block2;
+
+        public Pair(BoardBlock block1, BoardBlock block2) {
+            this.block1 = block1;
+            this.block2 = block2;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null || getClass() != obj.getClass()) {
+                return false;
+            }
+            Pair pair = (Pair) obj;
+            return block1.equals(pair.block1) && block2.equals(pair.block2);
+        }
+
+        @Override
+        public int hashCode() {
+            return 31 * block1.hashCode() + block2.hashCode();
+        }
+    }
+
+    // Nested Cell class for A* algorithm
+    private class Cell {
+        Pair parent;
+        double f, g, h;
+
+        public Cell() {
+            parent = null;
+            f = g = h = Double.MAX_VALUE;
+        }
+
+        public Cell(Pair parent, double f, double g, double h) {
+            this.parent = parent;
+            this.f = f;
+            this.g = g;
+            this.h = h;
+        }
+    }
+
+    // Method to check if a BoardBlock is traversable
+    private boolean isTraversable(BoardBlock block) {
+        return block.getState().equals("E"); // Assuming "E" means empty/traversable
+    }
+
+    // Method to check if a given row and column are within the board boundaries
+    private boolean isValid(int row, int col) {
+        return row >= 0 && row < board.length && col >= 0 && col < board[0].length;
+    }
+
+    // Method to calculate the heuristic value (H) for A*
+    private double calculateHValue(int srcRow, int srcCol, int destRow, int destCol) {
+        return Math.sqrt(Math.pow((srcRow - destRow), 2) + Math.pow((srcCol - destCol), 2));
+    }
+
+    // Method to check if path exists for a player
+    public boolean pathExists(Player player) {
+        int srcRow = player.getX();
+        int srcCol = player.getY();
+        int destRow = this.getWhichPlayer() == 1 ? 8 : 0;
+
+        return aStarSearch(srcRow, srcCol, destRow, srcCol);
+    }
+
+    // A* Search algorithm
+    private boolean aStarSearch(int srcRow, int srcCol, int destRow, int destCol) {
+        boolean[][] closedList = new boolean[board.length][board[0].length];
+        Cell[][] cellDetails = new Cell[board.length][board[0].length];
+
+        // Initialize starting cell
+        cellDetails[srcRow][srcCol] = new Cell(new Pair(board[srcRow][srcCol], null), 0.0, 0.0, 0.0);
+
+        PriorityQueue<Cell> openList = new PriorityQueue<>((cell1, cell2) -> Double.compare(cell1.f, cell2.f));
+        openList.add(cellDetails[srcRow][srcCol]);
+
+        while (!openList.isEmpty()) {
+            Cell current = openList.poll();
+            int i = current.parent.block1.getRow(); // Assuming BoardBlock has getRow() method
+            int j = current.parent.block1.getColumn(); // Assuming BoardBlock has getColumn() method
+
+            closedList[i][j] = true;
+
+            // Check all 8 successors of current cell
+            for (int addX = -1; addX <= 1; addX++) {
+                for (int addY = -1; addY <= 1; addY++) {
+                    int newRow = i + addX, newCol = j + addY;
+
+                    if (isValid(newRow, newCol)) {
+                        BoardBlock neighborBlock = board[newRow][newCol];
+
+                        if (newRow == destRow && newCol == destCol) {
+                            return true; // Destination found
+                        }
+
+                        if (!closedList[newRow][newCol] && isTraversable(neighborBlock)) {
+                            double gNew = current.g + 1.0;
+                            double hNew = calculateHValue(newRow, newCol, destRow, destCol);
+                            double fNew = gNew + hNew;
+
+                            if (cellDetails[newRow][newCol] == null || cellDetails[newRow][newCol].f > fNew) {
+                                cellDetails[newRow][newCol] = new Cell(new Pair(neighborBlock, current.parent.block1), fNew, gNew, hNew);
+                                openList.add(cellDetails[newRow][newCol]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return false; // Path not found
+    }
+
 }
