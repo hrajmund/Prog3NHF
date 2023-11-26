@@ -8,13 +8,14 @@ public class GameManager {
     private int nextPlayer;
     private Player P1;
     private Player P2;
-    GameManager(BoardBlock[][] board, int[] playerScore, Player P1, Player P2){
-       this.board = board;
-       this.playerScore = playerScore;
-       whichPlayer = 0;
-       nextPlayer = 1;
-       this.P1 = P1;
-       this.P2 = P2;
+
+    GameManager(BoardBlock[][] board, int[] playerScore, Player P1, Player P2) {
+        this.board = board;
+        this.playerScore = playerScore;
+        whichPlayer = 0;
+        nextPlayer = 1;
+        this.P1 = P1;
+        this.P2 = P2;
     }
 
     GameManager(File gameFile) {
@@ -31,13 +32,13 @@ public class GameManager {
             String[] playerData = line.split(";");
             playerScore[0] = Integer.parseInt(playerData[0]);
             playerScore[1] = Integer.parseInt(playerData[1]);
-            P1 = new Player(playerData[0], 1);
-            P2 = new Player(playerData[1], 2);
+            P1 = new Player(playerData[2], 1);
+            P2 = new Player(playerData[3], 2);
 
             int rowCounter = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] boardData = line.split(" ");
-                for(int i = 0; i < 9; i++){
+                for (int i = 0; i < 9; i++) {
                     BoardBlock tmp = new BoardBlock(boardData[i]);
                     board[rowCounter][i] = tmp;
                 }
@@ -50,12 +51,16 @@ public class GameManager {
         }
         whichPlayer = 0;
         nextPlayer = 1;
+
+
+        System.out.println(this.findPath(board,P1,P2,4,3,4,4));
     }
 
     public void save(String boardName, BoardBlock[][] saveBoard, int savePlayerScore[]) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(boardName + ".txt"));
-            writer.write(savePlayerScore[0] + ";" + savePlayerScore[1]);
+            String wd = System.getProperty("user.dir");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(wd + "/NHF/boards/" + boardName + ".txt"));
+            writer.write(savePlayerScore[0] + ";" + savePlayerScore[1] + ";" + P1.getName() + ";" + P2.getName());
             writer.newLine();
 
             for (int i = 0; i < 9; i++) {
@@ -69,38 +74,43 @@ public class GameManager {
             }
 
             writer.close();
+            System.exit(0);
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
         }
     }
-    public BoardBlock[][] getBoard(){
+
+    public BoardBlock[][] getBoard() {
         return board;
     }
 
-    public int[] getPlayerScore(){
+    public int[] getPlayerScore() {
         return playerScore;
     }
 
-    public boolean StepPlayer(int x, int y){
+    public boolean StepPlayer(int x, int y) {
+        if(x == -1 || y == -1 || x == 9 || y == 9){
+            return false;
+        }
         return board[x][y].getState().equals("E");
     }
 
 
-    public boolean GameOver(Player temp){
-        if(temp == P1){
+    public boolean GameOver(Player temp) {
+        if (temp == P1) {
             return P1.getX() == 8;
-        }else if(temp == P2){
+        } else if (temp == P2) {
             return P2.getX() == 0;
         }
         return false;
     }
 
     //For debugging purposes
-    public String findPlayer(Player temp){
-        for(int i = 0; i < 9; i++){
-            for(int j = 0; j < 9; j++){
-                if(board[i][j].getState().equals(temp.getName())){
-                    return "(" + i + "," + j +")";
+    public String findPlayer(Player temp) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j].getState().equals(temp.getName())) {
+                    return "(" + i + "," + j + ")";
                 }
             }
         }
@@ -110,164 +120,162 @@ public class GameManager {
     public int getNextPlayer() {
         return nextPlayer;
     }
-    public int getWhichPlayer(){
+
+    public int getWhichPlayer() {
         return whichPlayer;
     }
-    public Player getPlayer(){
+
+    public Player getPlayer() {
         return whichPlayer == 1 ? P1 : P2;
     }
-    public Player getPlayer(int nextPlayer){
+
+    public Player getPlayer(int nextPlayer) {
         return nextPlayer == 1 ? P1 : P2;
     }
 
-    public void setNextPlayer(int nextPlayer){
+    public void setNextPlayer(int nextPlayer) {
         this.nextPlayer = nextPlayer;
     }
 
-    public void setWhichPlayer(int whichPlayer){
+    public void setWhichPlayer(int whichPlayer) {
         this.whichPlayer = whichPlayer;
     }
 
-    public Player getP1(){
+    public Player getP1() {
         return P1;
     }
 
-    public Player getP2(){
+    public Player getP2() {
         return P2;
     }
 
-    public void PlayerPutBlockOnTheBoard(int player){
-        if(player == 1){
+    public void PlayerPutBlockOnTheBoard(int player) {
+        if (player == 1) {
             playerScore[0] -= 1;
-        }else{
+        } else {
             playerScore[1] -= 1;
         }
     }
 
-    public void PlayerPickBlockOffTheBoard(int player){
-        if(player == 1){
+    public void PlayerPickBlockOffTheBoard(int player) {
+        if (player == 1) {
             playerScore[0] += 2;
-        }else{
+        } else {
             playerScore[1] += 2;
         }
     }
 
-    // Nested Pair class to hold two BoardBlock objects
-    public class Pair {
-        BoardBlock block1;
-        BoardBlock block2;
+    class Graph {
 
-        public Pair(BoardBlock block1, BoardBlock block2) {
-            this.block1 = block1;
-            this.block2 = block2;
-        }
+        private Map<BoardBlock, Map<BoardBlock, Integer>> graphMap;
+        private BoardBlock[][] copyOfBoard;
 
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null || getClass() != obj.getClass()) {
-                return false;
-            }
-            Pair pair = (Pair) obj;
-            return block1.equals(pair.block1) && block2.equals(pair.block2);
-        }
+        public Graph(BoardBlock[][] boardBlocks){
+            copyOfBoard = new BoardBlock[9][9];
 
-        @Override
-        public int hashCode() {
-            return 31 * block1.hashCode() + block2.hashCode();
-        }
-    }
+            for(int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++)
+                    copyOfBoard[i][j] = boardBlocks[i][j];
 
-    // Nested Cell class for A* algorithm
-    private class Cell {
-        Pair parent;
-        double f, g, h;
 
-        public Cell() {
-            parent = null;
-            f = g = h = Double.MAX_VALUE;
-        }
+            graphMap = new HashMap<>();
+            for (int i = 0; i < boardBlocks.length; i++){
+                for(int j = 0; j < boardBlocks[i].length; j++){
+                    BoardBlock current = boardBlocks[i][j];
+                    Map<BoardBlock, Integer> neighbors = new HashMap<>();
+                    if(i>0) neighbors.put(boardBlocks[i-1][j],1);
+                    if(i < boardBlocks.length-1) neighbors.put(boardBlocks[i+1][j], 1);
+                    if(j > 0) neighbors.put(boardBlocks[i][j-1], 1);
+                    if(j < boardBlocks.length-1) neighbors.put(boardBlocks[i][j+1],1);
 
-        public Cell(Pair parent, double f, double g, double h) {
-            this.parent = parent;
-            this.f = f;
-            this.g = g;
-            this.h = h;
-        }
-    }
-
-    // Method to check if a BoardBlock is traversable
-    private boolean isTraversable(BoardBlock block) {
-        return block.getState().equals("E"); // Assuming "E" means empty/traversable
-    }
-
-    // Method to check if a given row and column are within the board boundaries
-    private boolean isValid(int row, int col) {
-        return row >= 0 && row < board.length && col >= 0 && col < board[0].length;
-    }
-
-    // Method to calculate the heuristic value (H) for A*
-    private double calculateHValue(int srcRow, int srcCol, int destRow, int destCol) {
-        return Math.sqrt(Math.pow((srcRow - destRow), 2) + Math.pow((srcCol - destCol), 2));
-    }
-
-    // Method to check if path exists for a player
-    public boolean pathExists(Player player) {
-        int srcRow = player.getX();
-        int srcCol = player.getY();
-        int destRow = this.getWhichPlayer() == 1 ? 8 : 0;
-
-        return aStarSearch(srcRow, srcCol, destRow, srcCol);
-    }
-
-    // A* Search algorithm
-    private boolean aStarSearch(int srcRow, int srcCol, int destRow, int destCol) {
-        boolean[][] closedList = new boolean[board.length][board[0].length];
-        Cell[][] cellDetails = new Cell[board.length][board[0].length];
-
-        // Initialize starting cell
-        cellDetails[srcRow][srcCol] = new Cell(new Pair(board[srcRow][srcCol], null), 0.0, 0.0, 0.0);
-
-        PriorityQueue<Cell> openList = new PriorityQueue<>((cell1, cell2) -> Double.compare(cell1.f, cell2.f));
-        openList.add(cellDetails[srcRow][srcCol]);
-
-        while (!openList.isEmpty()) {
-            Cell current = openList.poll();
-            int i = current.parent.block1.getRow(); // Assuming BoardBlock has getRow() method
-            int j = current.parent.block1.getColumn(); // Assuming BoardBlock has getColumn() method
-
-            closedList[i][j] = true;
-
-            // Check all 8 successors of current cell
-            for (int addX = -1; addX <= 1; addX++) {
-                for (int addY = -1; addY <= 1; addY++) {
-                    int newRow = i + addX, newCol = j + addY;
-
-                    if (isValid(newRow, newCol)) {
-                        BoardBlock neighborBlock = board[newRow][newCol];
-
-                        if (newRow == destRow && newCol == destCol) {
-                            return true; // Destination found
-                        }
-
-                        if (!closedList[newRow][newCol] && isTraversable(neighborBlock)) {
-                            double gNew = current.g + 1.0;
-                            double hNew = calculateHValue(newRow, newCol, destRow, destCol);
-                            double fNew = gNew + hNew;
-
-                            if (cellDetails[newRow][newCol] == null || cellDetails[newRow][newCol].f > fNew) {
-                                cellDetails[newRow][newCol] = new Cell(new Pair(neighborBlock, current.parent.block1), fNew, gNew, hNew);
-                                openList.add(cellDetails[newRow][newCol]);
-                            }
-                        }
-                    }
+                    graphMap.put(current, neighbors);
                 }
             }
         }
 
-        return false; // Path not found
+        public Map<BoardBlock, Integer> getNeighbors(BoardBlock block){
+            return graphMap.getOrDefault(block, new HashMap<>());
+        }
+
+        public List<BoardBlock> dijkstra(Graph g, int startingPointX, int startingPointY, int targetRow){
+            Map<BoardBlock, Integer> distances = new HashMap<>();
+            Map<BoardBlock, BoardBlock> predecessors = new HashMap<>();
+            PriorityQueue<BoardBlock> queue = new PriorityQueue<>(Comparator.comparing(distances::get));
+
+            for(BoardBlock block : graphMap.keySet()){
+                if(g.graphMap.containsKey(block) && (block.getRow() == startingPointX && block.getColumn() == startingPointY)){
+                    distances.put(block,0);
+                }else{
+                    distances.put(block, Integer.MAX_VALUE);
+                }
+            }
+
+            queue.add(g.copyOfBoard[startingPointX][startingPointY]);
+
+            while(!queue.isEmpty()){
+                BoardBlock currentBlock = queue.poll();
+                int currentDistance = distances.get(currentBlock);
+
+                if(currentBlock.getRow() == targetRow){
+                    break;
+                }
+
+                for(Map.Entry<BoardBlock, Integer> neigborEntry : g.getNeighbors(currentBlock).entrySet()){
+                    BoardBlock neighbor = neigborEntry.getKey();
+                    int weight = neigborEntry.getValue();
+                    int distanceThroughCurrent = currentDistance + weight;
+                    if(distanceThroughCurrent <= distances.get(neighbor)){
+                        distances.put(neighbor, distanceThroughCurrent);
+                        predecessors.put(neighbor, currentBlock);
+                        queue.add(neighbor);
+                    }
+                }
+            }
+
+            LinkedList<BoardBlock> path = new LinkedList<>();
+            BoardBlock current = null;
+
+
+            for(int i = 0; i < 9; i++){
+                if(predecessors.containsKey(g.copyOfBoard[targetRow][i]) && g.copyOfBoard[targetRow][i].getState().equals("E")){
+                    current = g.copyOfBoard[targetRow][i];
+                    break;
+                }
+            }
+
+            while(current != null){
+                path.addFirst(current);
+                current = predecessors.get(current);
+            }
+
+            List<BoardBlock> optimizedPath = new ArrayList<>();
+            if(!path.isEmpty()){
+                optimizedPath.add(path.get(0));
+                for(int j = 1; j < path.size()-1;j++){
+                    BoardBlock previous = path.get(j-1);
+                    BoardBlock currentBlock = path.get(j);
+                    BoardBlock next = path.get(j+1);
+
+                    if(previous.getRow() != currentBlock.getRow() || currentBlock.getRow() != next.getRow()){
+                        optimizedPath.add(currentBlock);
+                    }
+                }
+                optimizedPath.add(path.get(path.size() - 1));
+            }
+            return optimizedPath;
+        }
     }
 
+    public boolean findPath(BoardBlock[][] boardBlocks, Player one, Player two, int firstChangedBlockX, int firstChangedBlockY, int secondChangedBlockX, int secondChangedBlockY){
+        BoardBlock[][] tmp = boardBlocks;
+        tmp[firstChangedBlockX][firstChangedBlockY].setState("B");
+        tmp[secondChangedBlockX][secondChangedBlockY].setState("B");
+        Graph graph = new Graph(tmp);
+        List<BoardBlock> pathforP1 = graph.dijkstra(graph, one.getX(), one.getY(), 8);
+        List<BoardBlock> pathforP2 = graph.dijkstra(graph, two.getX(), two.getY(), 0);
+        if(pathforP1.isEmpty() && pathforP2.isEmpty()){
+            return false;
+        }
+        return true;
+    }
 }

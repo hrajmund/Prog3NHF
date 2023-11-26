@@ -26,6 +26,8 @@ public class IllegalMoveWindow {
             errorMessage.setText("Egy játékos nem léphet kétszer egymás után!");
         }else if (whichError == 2){
             errorMessage.setText("Nem léphetsz arra a mezőre!");
+        }else if(whichError == 3){
+            errorMessage.setText("Nincs több akadályod!");
         }
         errorMessage.setFocusable(false);
         upperPanel.add(errorMessage);

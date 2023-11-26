@@ -1,10 +1,10 @@
-10;10;Player 2;Player1
+10;10;BoardTest;BoardTest 2
+E E E E E E E E E
 E E E E E E E E E
 E E E E P1 E E E E
 E E E E E E E E E
 E E E E E E E E E
-B B B E E B B B B
 E E E E E E E E E
-E E P2 E E E E E E
 E E E E E E E E E
+E E E E P2 E E E E
 E E E E E E E E E

@@ -19,3 +19,9 @@ N
 NHF/src/IllegalMoveWindow.java,8/5/85170801bf883c61bdb622c68089866f200bec64
 I
 NHF/src/MouseHandler.java,4/4/4425e5b250e865f8d39665f9308432f242ee9cd5
+L
+NHF/src/GameManagerTest.java,5/0/5065aee1ec3e62ade434ecaadf29074d4e59b450
+C
+NHF/boards/test.txt,b/c/bc68e098d9a2168e266e547bab4553a08bd8e705
+K
+NHF/src/BoardBlockTest.java,b/4/b4419ae685eb9a00c9cb5d858aa5ae0d74e758f6

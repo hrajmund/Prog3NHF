@@ -190,10 +190,10 @@ public class GameWindow extends JLabel{
     }
     public void setPickBlockPlayerScore(int whichPlayer){
        if (whichPlayer == 1){
-           int temp = Integer.parseInt(p1BlockScore.getText()) + 2;
+           int temp = Integer.parseInt(p1BlockScore.getText()) + 1;
            p1BlockScore.setText(Integer.toString(temp));
        }else{
-           int temp = Integer.parseInt(p2BlockScore.getText()) + 2;
+           int temp = Integer.parseInt(p2BlockScore.getText()) + 1;
            p2BlockScore.setText(Integer.toString(temp));
        }
     }

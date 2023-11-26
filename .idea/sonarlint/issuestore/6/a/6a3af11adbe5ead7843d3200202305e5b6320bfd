@@ -1,7 +1,10 @@
 
 J
-java:S1604"(Make this anonymous inner class a lambda(Ô¶µÿşÿÿÿÿ8’§Á½1
+java:S1604"(Make this anonymous inner class a lambda(Ô¶µÿşÿÿÿÿ8’§Á½1
+]	java:S125"<This block of commented-out lines of code should be removed.(ğÒ¤¼ûÿÿÿÿ8³¬ÆÜÀ1
 `
-java:S1854">Remove this useless assignment to local variable "menuWindow".(æØÑ“ùÿÿÿÿ8š§Á½1
+java:S1854
+">Remove this useless assignment to local variable "menuWindow".(æØÑ“ùÿÿÿÿ8š§Á½1
 Q
-java:S1481"/Remove this unused "menuWindow" local variable.(æØÑ“ùÿÿÿÿ8œ§Á½1
+java:S1481
+"/Remove this unused "menuWindow" local variable.(æØÑ“ùÿÿÿÿ8œ§Á½1

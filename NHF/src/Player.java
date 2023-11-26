@@ -8,6 +8,11 @@ public class Player {
         x = y = 0;
     }
 
+    Player(int numberOfThePlayer){
+        this.numberOfThePlayer = numberOfThePlayer;
+        x = y = 0;
+    }
+
     public String getLocation(){
         return x + ";" + y;
     }

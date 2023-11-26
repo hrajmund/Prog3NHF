@@ -25,6 +25,7 @@ public class KeyHandler implements KeyListener {
         tempP1y = P1.getY();
         tempP2x = P2.getX();
         tempP2y = P2.getY();
+
         illegalMove = false;
         if(gameManager.getNextPlayer() == 1){
             try{

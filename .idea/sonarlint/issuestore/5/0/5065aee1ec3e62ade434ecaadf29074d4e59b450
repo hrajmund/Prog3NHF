@@ -1,0 +1,10 @@
+
+r
+java:S1104"WMake gameManager a static final constant or non-public and provide accessors if needed.(µÃ”Îüÿÿÿÿ
+l
+java:S1104"QMake board a static final constant or non-public and provide accessors if needed.(ÇàÕ×øÿÿÿÿ
+g	java:S116
+"MRename this field "P1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º†³üÿÿÿÿ
+b	java:S116"MRename this field "P2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì–ÖŒ
+F
+java:S5960"+Remove this assertion from production code.(ÌÖÚ´üÿÿÿÿ

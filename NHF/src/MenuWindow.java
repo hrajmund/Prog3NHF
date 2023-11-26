@@ -1,7 +1,11 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.io.File;
 
 public class MenuWindow extends JFrame{
     private final JButton Start;
@@ -19,21 +23,19 @@ public class MenuWindow extends JFrame{
         frame.setSize(600,600);
         frame.setLayout(new GridLayout(3,1));
         frame.setResizable(false);
-
         upperPanel = new JPanel(new FlowLayout());
         middlePanel = new JPanel(new FlowLayout());
         lowerPanel = new JPanel(new FlowLayout());
 
-        P1Name = new JTextField(20);
-        P2Name = new JTextField(20);
+        P1Name = new JTextField();
+        P2Name = new JTextField();
         Start = new JButton("Start");
-        Start.setSize(100,50);
         End = new JButton("Quit");
-        End.setSize(100,50);
+
         Start.addActionListener(new StartEventListener());
         End.addActionListener(new EndEventListener());
         boardName = new JTextField(20);
-
+        boardName.setPreferredSize(new Dimension(20,20));
         upperPanel.add(Start);
         upperPanel.add(boardName);
         middlePanel.add(P1Name);
@@ -43,6 +45,7 @@ public class MenuWindow extends JFrame{
         frame.add(upperPanel);
         frame.add(middlePanel);
         frame.add(lowerPanel);
+        frame.getContentPane().setBackground(new Color(47,72,88));
         frame.setVisible(true);
     }
 
@@ -61,7 +64,6 @@ public class MenuWindow extends JFrame{
     }
 
     public class EndEventListener implements ActionListener{
-
         @Override
         public void actionPerformed(ActionEvent e) {
             System.exit(0);
