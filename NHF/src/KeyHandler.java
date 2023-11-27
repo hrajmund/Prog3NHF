@@ -121,7 +121,6 @@ public class KeyHandler implements KeyListener {
         gameManager.setNextPlayer(gameWindow.repaintBoard(tempP1x, tempP1y, tempP2x, tempP2y, gameManager.getWhichPlayer(), illegalMove, gameManager.getNextPlayer()));
         illegalMove = false;
 
-        System.out.println(gameManager.getPlayer().getY());
         if(gameManager.GameOver(gameManager.getPlayer())) {
             GameOverWindow gameOverWindow = new GameOverWindow(gameManager.getPlayer());
         }

@@ -51,9 +51,6 @@ public class GameManager {
         }
         whichPlayer = 0;
         nextPlayer = 1;
-
-
-        System.out.println(this.findPath(board,P1,P2,4,3,4,4));
     }
 
     public void save(String boardName, BoardBlock[][] saveBoard, int savePlayerScore[]) {

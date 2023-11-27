@@ -13,12 +13,12 @@ public class BoardBlock extends JLabel {
 
     BoardBlock(String stat) {
         state = stat;
-        setPreferredSize(new Dimension(10, 10)); // Beállítjuk a preferált méretet
+        setPreferredSize(new Dimension(10, 10));
     }
     BoardBlock(String stat, BoardBlock previous) {
         state = stat;
         this.previous = previous;
-        setPreferredSize(new Dimension(10, 10)); // Beállítjuk a preferált méretet
+        setPreferredSize(new Dimension(10, 10));
     }
     public void setRow(int row) { this.row = row; }
     public void setColumn(int column) { this.column = column; }

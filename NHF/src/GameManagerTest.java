@@ -45,4 +45,12 @@ class GameManagerTest {
         P1.setCoordinates(3,3);
         assertEquals("(3,3)", gameManager.findPlayer(P1));
     }
+
+    @Test
+    void playerPutBlockOnTheBoard(){
+        gameManager.PlayerPutBlockOnTheBoard(1);
+        assertEquals(9, playerScore[0]);
+        assertEquals(10, playerScore[1]);
+    }
+
 }

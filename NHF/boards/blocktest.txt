@@ -1,0 +1,10 @@
+9;9;Player 1 Name;Player 2 Name
+E E E E E E E E E
+E E E E P1 E E E E
+E E E E E E E E E
+E E E B B E E E E
+E E E E E E E E E
+E E E E E E B E E
+E E E E E E B E E
+E E E E P2 E E E E
+E E E E E E E E E

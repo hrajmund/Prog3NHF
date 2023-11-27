@@ -50,24 +50,30 @@ public class GameWindow extends JLabel{
         frame.add(southPanel, BorderLayout.SOUTH);
         frame.add(upperPanel, BorderLayout.CENTER);
 
-        P1 = new Player(p1Name, 1);
-        P2 = new Player(p2Name, 2);
 
-        if(boardInitialize){
+
+        if(boardInitialize && !inputBoard.equals("Board Name")){
             gameManager = new GameManager(new File(inputBoard + ".txt"));
             playerScore = gameManager.getPlayerScore();
             board = initializeBoardBlocks(true);
+            P1 = gameManager.getP1();
+            P2 = gameManager.getP2();
+            p1NameScore = new JTextArea(gameManager.getP1().getName());
+            p2NameScore = new JTextArea(gameManager.getP2().getName());
         }else{
+            P1 = new Player(p1Name, 1);
+            P2 = new Player(p2Name, 2);
             board = initializeBoardBlocks(false);
             playerScore = new int[2];
             playerScore[0] = playerScore[1] = 10;
             gameManager = new GameManager(board, playerScore, P1, P2);
+            p1NameScore = new JTextArea(p1Name);
+            p2NameScore = new JTextArea(p2Name);
         }
 
+
         p1BlockScore = new JTextArea(Integer.toString(playerScore[0]));
-        p1NameScore = new JTextArea(p1Name);
         p2BlockScore = new JTextArea(Integer.toString(playerScore[1]));
-        p2NameScore = new JTextArea(p2Name);
 
         p1BlockScore.setFocusable(false);
         p2BlockScore.setFocusable(false);

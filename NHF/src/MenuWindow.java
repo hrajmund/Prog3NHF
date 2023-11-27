@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.io.File;
 
 public class MenuWindow extends JFrame{
     private final JButton Start;
@@ -27,15 +26,75 @@ public class MenuWindow extends JFrame{
         middlePanel = new JPanel(new FlowLayout());
         lowerPanel = new JPanel(new FlowLayout());
 
-        P1Name = new JTextField();
-        P2Name = new JTextField();
+        P1Name = new JTextField("Player 1 Name", 10);
+        P1Name.setPreferredSize(new Dimension(P1Name.getWidth(), P1Name.getHeight()+30));
+        Font newTextFieldFont=new Font(P1Name.getFont().getName(),Font.BOLD,P1Name.getFont().getSize());
+        P1Name.setFont(newTextFieldFont);
+        P1Name.setForeground(Color.GRAY);
+        P1Name.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (P1Name.getText().equals("Player 1 Name")) {
+                    P1Name.setText("");
+                    P1Name.setForeground(Color.BLACK);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (P1Name.getText().isEmpty()) {
+                    P1Name.setForeground(Color.GRAY);
+                    P1Name.setText("Player 1 Name");
+                }
+            }
+        });
+
+        P2Name = new JTextField("Player 2 Name", 10);
+        P2Name.setPreferredSize(new Dimension(P2Name.getWidth(), P2Name.getHeight()+30));
+        P2Name.setFont(newTextFieldFont);
+        P2Name.setForeground(Color.GRAY);
+        P2Name.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (P2Name.getText().equals("Player 2 Name")) {
+                    P2Name.setText("");
+                    P2Name.setForeground(Color.BLACK);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (P2Name.getText().isEmpty()) {
+                    P2Name.setForeground(Color.GRAY);
+                    P2Name.setText("Player 2 Name");
+                }
+            }
+        });
+
         Start = new JButton("Start");
+
         End = new JButton("Quit");
 
         Start.addActionListener(new StartEventListener());
         End.addActionListener(new EndEventListener());
-        boardName = new JTextField(20);
+        boardName = new JTextField("Board Name", 20);
         boardName.setPreferredSize(new Dimension(20,20));
+        boardName.setFont(newTextFieldFont);
+        boardName.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (boardName.getText().equals("Board Name")) {
+                    boardName.setText("");
+                    boardName.setForeground(Color.BLACK);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (boardName.getText().isEmpty()) {
+                    boardName.setForeground(Color.GRAY);
+                    boardName.setText("Board Name");
+                }
+            }
+        });
+
         upperPanel.add(Start);
         upperPanel.add(boardName);
         middlePanel.add(P1Name);
@@ -54,7 +113,7 @@ public class MenuWindow extends JFrame{
         public void actionPerformed(ActionEvent e) {
             boolean boardInit = false;
             String inputBoard = "";
-            if(!boardName.getText().isEmpty()){
+            if(!boardName.getText().equals("Board Name")){
                 boardInit = true;
                 inputBoard = boardName.getText();
             }
@@ -64,6 +123,7 @@ public class MenuWindow extends JFrame{
     }
 
     public class EndEventListener implements ActionListener{
+
         @Override
         public void actionPerformed(ActionEvent e) {
             System.exit(0);
