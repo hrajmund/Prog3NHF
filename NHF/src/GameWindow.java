@@ -34,7 +34,7 @@ public class GameWindow extends JLabel{
         JPanel northPanel = new JPanel();
         northPanel.setPreferredSize(new Dimension(100,100));
         JPanel eastPanel = new JPanel();
-        eastPanel.setPreferredSize(new Dimension(100,100));
+        eastPanel.setPreferredSize(new Dimension(120,100));
         JPanel westPanel = new JPanel();
         westPanel.setPreferredSize(new Dimension(150,100));
         JPanel southPanel = new JPanel();
@@ -49,7 +49,6 @@ public class GameWindow extends JLabel{
         frame.add(westPanel, BorderLayout.WEST);
         frame.add(southPanel, BorderLayout.SOUTH);
         frame.add(upperPanel, BorderLayout.CENTER);
-
 
 
         if(boardInitialize && !inputBoard.equals("Board Name")){
@@ -68,7 +67,9 @@ public class GameWindow extends JLabel{
             playerScore[0] = playerScore[1] = 10;
             gameManager = new GameManager(board, playerScore, P1, P2);
             p1NameScore = new JTextArea(p1Name);
+            p1NameScore.setFont(p1NameScore.getFont().deriveFont(10.0f));
             p2NameScore = new JTextArea(p2Name);
+            p2NameScore.setFont(p2NameScore.getFont().deriveFont(10.0f));
         }
 
 

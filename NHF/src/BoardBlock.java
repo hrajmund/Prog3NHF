@@ -9,15 +9,9 @@ public class BoardBlock extends JLabel {
     private Graphics g;
     private int row;
     private int column;
-    public BoardBlock previous;
 
     BoardBlock(String stat) {
         state = stat;
-        setPreferredSize(new Dimension(10, 10));
-    }
-    BoardBlock(String stat, BoardBlock previous) {
-        state = stat;
-        this.previous = previous;
         setPreferredSize(new Dimension(10, 10));
     }
     public void setRow(int row) { this.row = row; }

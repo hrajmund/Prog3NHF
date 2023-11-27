@@ -47,7 +47,7 @@ public class GameManager {
 
             bufferedReader.close();
         } catch (IOException e) {
-            System.err.println(e);
+            IllegalMoveWindow illegalMoveWindow = new IllegalMoveWindow(4);
         }
         whichPlayer = 0;
         nextPlayer = 1;
@@ -85,35 +85,6 @@ public class GameManager {
         return playerScore;
     }
 
-    public boolean StepPlayer(int x, int y) {
-        if(x == -1 || y == -1 || x == 9 || y == 9){
-            return false;
-        }
-        return board[x][y].getState().equals("E");
-    }
-
-
-    public boolean GameOver(Player temp) {
-        if (temp == P1) {
-            return P1.getX() == 8;
-        } else if (temp == P2) {
-            return P2.getX() == 0;
-        }
-        return false;
-    }
-
-    //For debugging purposes
-    public String findPlayer(Player temp) {
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (board[i][j].getState().equals(temp.getName())) {
-                    return "(" + i + "," + j + ")";
-                }
-            }
-        }
-        return "";
-    }
-
     public int getNextPlayer() {
         return nextPlayer;
     }
@@ -144,6 +115,33 @@ public class GameManager {
 
     public Player getP2() {
         return P2;
+    }
+    public boolean StepPlayer(int x, int y) {
+        if(x == -1 || y == -1 || x == 9 || y == 9){
+            return false;
+        }
+        return board[x][y].getState().equals("E");
+    }
+
+    public boolean GameOver(Player temp) {
+        if (temp == P1) {
+            return P1.getX() == 8;
+        } else if (temp == P2) {
+            return P2.getX() == 0;
+        }
+        return false;
+    }
+
+    //For debugging purposes
+    public String findPlayer(Player temp) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j].getState().equals(temp.getName())) {
+                    return "(" + i + "," + j + ")";
+                }
+            }
+        }
+        return "";
     }
 
     public void PlayerPutBlockOnTheBoard(int player) {

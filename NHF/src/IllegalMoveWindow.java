@@ -8,6 +8,7 @@ public class IllegalMoveWindow {
     private final JButton saveButton;
     private final JPanel upperPanel, lowerPanel;
     private final JFrame frame;
+    private final int WhichError;
 
     IllegalMoveWindow(int whichError) {
         frame = new JFrame("Error");
@@ -21,6 +22,8 @@ public class IllegalMoveWindow {
 
         saveButton = new JButton("Ok");
         saveButton.addActionListener(new OkActionListener());
+
+        WhichError = whichError;
         errorMessage = new JTextArea();
         if (whichError == 1){
             errorMessage.setText("Egy játékos nem léphet kétszer egymás után!");
@@ -28,6 +31,8 @@ public class IllegalMoveWindow {
             errorMessage.setText("Nem léphetsz arra a mezőre!");
         }else if(whichError == 3){
             errorMessage.setText("Nincs több akadályod!");
+        }else if(whichError == 4){
+            errorMessage.setText("Nem található a fájl!");
         }
         errorMessage.setFocusable(false);
         upperPanel.add(errorMessage);
@@ -45,6 +50,9 @@ public class IllegalMoveWindow {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            if(WhichError == 4){
+                System.exit(0);
+            }
             frame.setVisible(false);
         }
     }
