@@ -101,7 +101,7 @@ public class MouseHandler extends MouseAdapter {
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
                     if (block.getRow() == i && block.getColumn() == j) {
-                            if(j == 0){
+                            if(j == 0 && gameManager.findPath(gameManager.board, gameManager.getP1(), gameManager.getP2(), i, j+1, i,j+2)){
                                 gameManager.board[i][0].setState("B");
                                 gameManager.board[i][1].setState("B");
                             }else if (j > 0 && gameManager.findPath(gameManager.board, gameManager.getP1(), gameManager.getP2(), i, j+1, i,j+2)

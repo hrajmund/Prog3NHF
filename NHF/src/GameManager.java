@@ -51,6 +51,7 @@ public class GameManager {
         }
         whichPlayer = 0;
         nextPlayer = 1;
+        //System.out.println(findPath(board,P1,P2, 4,3,4,4));
     }
 
     public void save(String boardName, BoardBlock[][] saveBoard, int savePlayerScore[]) {
@@ -262,13 +263,20 @@ public class GameManager {
     }
 
     public boolean findPath(BoardBlock[][] boardBlocks, Player one, Player two, int firstChangedBlockX, int firstChangedBlockY, int secondChangedBlockX, int secondChangedBlockY){
-        BoardBlock[][] tmp = boardBlocks;
+        BoardBlock[][] tmp = new BoardBlock[9][9];
+        for(int i = 0; i < 9; i++){
+            for(int k = 0; k < 9; k++){
+                tmp[i][k] = boardBlocks[i][k];
+            }
+        }
         tmp[firstChangedBlockX][firstChangedBlockY].setState("B");
         tmp[secondChangedBlockX][secondChangedBlockY].setState("B");
         Graph graph = new Graph(tmp);
         List<BoardBlock> pathforP1 = graph.dijkstra(graph, one.getX(), one.getY(), 8);
         List<BoardBlock> pathforP2 = graph.dijkstra(graph, two.getX(), two.getY(), 0);
         if(pathforP1.isEmpty() && pathforP2.isEmpty()){
+            tmp[firstChangedBlockX][firstChangedBlockY].setState("E");
+            tmp[secondChangedBlockX][secondChangedBlockY].setState("E");
             return false;
         }
         return true;
